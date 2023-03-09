@@ -65,3 +65,7 @@
   gap: 1rem;
 }
 
+::-webkit-scrollbar {
+  display: none;
+  
+}

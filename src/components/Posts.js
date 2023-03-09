@@ -4,11 +4,11 @@ import Post from './Post'
 
 const Posts = () => {
   return (
-    <div className=''>
+    <div className='flex flex-col gap-[1rem] '>
         {
-            PostsData?.map((post, id) => {
+            PostsData?.map((post, i) => {
                 return (
-                    <Post />
+                    <Post data={post} id={i} />
                 )
             })
         }
