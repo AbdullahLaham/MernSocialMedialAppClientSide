@@ -16,7 +16,7 @@ const RightSide = () => {
       <TrendCard />
 
       {/* Share buttong */}
-      <button className="button r-button" onClick={() => setModalOpened(true)}>
+      <button className="button h-[3rem] w-[80%] mx-auto" onClick={() => setModalOpened(true)}>
         Share
       </button>
       <ShareModal modalOpened={modalOpened} setModalOpened={setModalOpened} />

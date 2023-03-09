@@ -16,7 +16,7 @@ const FollowersCard = () => {
                             </div>
 
                         </div>
-                        <button className='button'>
+                        <button className='button h-[2rem]'>
                             Follow
                         </button>
 
