@@ -5,6 +5,7 @@ import ProfileCard from '../components/ProfileCard'
 import RightSide from '../components/RightSide'
 
 const ProfilePage = () => {
+  
   return (
     <div className='relative profilePage'>
         <LeftProfileSide />

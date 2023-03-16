@@ -6,7 +6,7 @@ import NavIcons from "./NavIcons";
 const RightSide = () => {
 
   const [modalOpened, setModalOpened] = useState(false);
-
+  
   return (
     <div className="RightSide flex flex-col gap-[2rem] ">
       {/* Side Navbar */}
