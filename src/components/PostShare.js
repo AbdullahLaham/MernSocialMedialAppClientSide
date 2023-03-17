@@ -84,7 +84,7 @@ const PostShare = () => {
                 <UilSchedule />
                 Scheduak
             </div>
-            <button disabled={loading} className='button' onClick={handleSubmit}>
+            <button disabled={loading || (!desc?.current?.value && !image) } className='button' onClick={handleSubmit}>
                 {loading ? "Uploading..." : "Share"}
             </button>
             <div>
@@ -96,11 +96,11 @@ const PostShare = () => {
 
         </div>
 
-        {image && 
+        { image && 
         <div className='previewImage w-[100%] relative'>
             <UilTimes className='absolute top-[1rem] left-[1rem] cursor-pointer' onClick={() => setImage(null)} />
             <img src={URL.createObjectURL(image)} className='w-[70%] m-auto object-cover rounded-[.5rem] ' />
-        </div>}
+        </div> }
     </div>
   )
 }

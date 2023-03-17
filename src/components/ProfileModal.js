@@ -1,18 +1,24 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDisclosure } from '@mantine/hooks';
 import { Modal, useMantineTheme } from '@mantine/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { uploadImage } from '../actions/shareActions';
+import { updateUser } from '../actions/UserActions';
 
 function ProfileModal({modalOpened, setModalOpened, data}) {
+
   const [opened, { open, close }] = useDisclosure(false);
   const {password, ...other} = data;
   const [formData, setFormData] = useState(other);
   const [profileImage, setProfileImage] = useState(null);
-  const [CoverImage, setCoverImage] = useState(null);
+  const [coverImage, setCoverImage] = useState(null);
+  const [counter, setCounter] = useState(0);
   // dispatch
   const dispatch = useDispatch();
   const params = useParams();
+
+  const {id: userId} = params;
   const theme = useMantineTheme();
   const {authData: user} = useSelector((state) => state?.authReducer);
   // input handleChange
@@ -22,13 +28,48 @@ function ProfileModal({modalOpened, setModalOpened, data}) {
   }
   // uploadImages
   const uploadImages = (e) => {
+    const img = e.target.files[0];
 
+    if (e.target.name == 'profilePicture') {
+      setProfileImage(img);
+      const data = new FormData();
+      const filename = Date.now() + img?.name;
+      data.append("name", filename); // save as key and value
+      data.append('file', img);
+      setFormData({...formData, profilePicture: filename});
+      try {
+        dispatch(uploadImage(data));
+      } catch (error) {
+          console.log(error)
+      }
+    } else {
+      setCoverImage(img);
+      const data = new FormData();
+      const filename = Date.now() + img?.name;
+      data.append("name", filename); // save as key and value
+      data.append('file', img);
+      setFormData({...formData, coverPicture: filename});
+      try {
+        dispatch(uploadImage(data));
+      } catch (error) {
+          console.log(error)
+      }
+    }
   } 
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData)
+
+    dispatch(updateUser(userId, formData));
+    setModalOpened(false);
+    
   }
+  useEffect(() => {
+    setCounter(0)
+  }, [])
+
+
   return (
     <>
       <Modal
@@ -54,11 +95,11 @@ function ProfileModal({modalOpened, setModalOpened, data}) {
                     <input type={'text'} placeholder='Works At' className='w-[100%] p-[1rem] rounded-md bg-[#f3f3f3] border-none outline-none flex-1' name='worksAt' onChange={handleChange}  value={formData?.worksAt}/>
                 </div>
                 <div className='w-[100%] flex gap-[.5rem] items-center justify-center'>
-                    <input type={'text'} placeholder='Lives In' className='w-[50%] p-[1rem] rounded-md bg-[#f3f3f3] border-none outline-none flex-1' name='livesin'  onChange={handleChange} value={formData?.livesin}/>
+                    <input type={'text'} placeholder='Lives In' className='w-[50%] p-[1rem] rounded-md bg-[#f3f3f3] border-none outline-none flex-1' name='livesIn'  onChange={handleChange} value={formData?.livesIn}/>
                     <input type={'text'} placeholder='Country' className='w-[50%] p-[1rem] rounded-md bg-[#f3f3f3] border-none outline-none flex-1' name='country'  onChange={handleChange} value={formData?.country}/>
                 </div>
                 <div className='w-[100%]'>
-                    <input type={'text'} placeholder='Relationship Status' className='w-[100%] p-[1rem] rounded-md bg-[#f3f3f3] border-none outline-none flex-1' name='relationship' />
+                    <input type={'text'} placeholder='Relationship Status' className='w-[100%] p-[1rem] rounded-md bg-[#f3f3f3] border-none outline-none flex-1' name='relationship' onChange={handleChange} value={formData?.relationship} />
                 </div>
                 <div className='w-[100%] flex gap-[.5rem] items-center justify-center'>
                     <div className='flex items-center justify-between flex-1 '>
@@ -73,7 +114,7 @@ function ProfileModal({modalOpened, setModalOpened, data}) {
                     
                 </div>
             </div>
-            <button className='button ml-[80%] h-[2.5rem]'>submit</button>
+            <button type='submit' className='button ml-[80%] h-[2.5rem]'>submit</button>
         </form>
       </Modal>
       
