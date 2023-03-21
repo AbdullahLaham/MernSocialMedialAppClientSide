@@ -102,3 +102,8 @@
   background-color: silver;
   pointer-events: none;
 }
+
+
+@media screen and (max-width: 1000px) {
+  
+}

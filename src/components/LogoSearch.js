@@ -3,7 +3,7 @@ import Logo from '../img/logo.png'
 import {UilSearch} from '@iconscout/react-unicons'
 const LogoSearch = () => {
   return (
-    <div className='flex gap-[.75rem]'>
+    <div className=' gap-[.75rem] hidden lg:flex'>
         <img src={Logo} alt='userImage' />
         <div className='Search flex bg-[var(--inputColor)] rounded-[10px] p-[5px] '  >
             <input type={'text'} className='bg-transparent border-none outline-none ' placeholder='#Explore' />

@@ -25,7 +25,7 @@ const Post = ({data}) => {
 
   return (
     <div className='flex flex-col p-[1rem] rounded-[1rem] gap-[.2rem]'>
-        <img className='max-w-[100%] max-h-[20rem]  rounded-[.5rem] ' src={data?.image ? 'http://localhost:5000/images/' + data?.image : ''} />
+        <img className='max-w-[100%] max-h-[20rem] object-cover  rounded-[.5rem] ' src={data?.image ? 'http://localhost:5000/images/' + data?.image : ''} />
         <div className='detail flex items-center justify-start gap-[.1rem] text-[.9rem ] text-gray-600 font-semibold'>
             <p><b>{data?.name}</b></p>
             <p>{data?.desc}</p>

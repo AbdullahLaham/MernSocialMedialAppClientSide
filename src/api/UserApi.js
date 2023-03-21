@@ -8,7 +8,8 @@ API.interceptors.request.use((req) => {
         req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('user')).token}`;
     }
     return req;
-})
+});
+
 export const fetchUserData = async (userId) => {
     try {
         console.log('hello')
