@@ -69,20 +69,20 @@ const PostShare = () => {
         </div>
         <div className='flex justify-around '>
             <label for='imageloader' className='text-[#4CB256] flex items-center justify-center hover:cursor-pointer py-[5px] px-[10px] rounded-[10px]  '>
-                <UilScenery />
-                Photo
+                <UilScenery className='w-auto lg:w-[3rem]' />
+                <p className='lg:block hidden'>Photo</p>
             </label>
             <div className='text-[#4A4EB7] flex items-center justify-center hover:cursor-pointer py-[5px] px-[10px] rounded-[10px]  '>
-                <UilPlayCircle />
-                Video
+                <UilPlayCircle className='w-auto lg:w-[3rem]' />
+                <p className='lg:block hidden'>Video</p>
             </div>
             <div className='text-[#EF5757] flex items-center justify-center hover:cursor-pointer py-[5px] px-[10px] rounded-[10px]  '>
-                <UilLocationPoint />
-                Location
+                <UilLocationPoint className='w-auto lg:w-[3rem]' />
+                <p className='lg:block hidden'>Location</p>
             </div>
             <div className='text-[#E1AE4A] flex items-center justify-center hover:cursor-pointer py-[5px] px-[10px] rounded-[10px]  '>
-                <UilSchedule />
-                Scheduak
+                <UilSchedule className='w-auto lg:w-[3rem]' />
+                <p className='lg:block hidden'>Scheduak</p>
             </div>
             <button disabled={loading || (!desc?.current?.value && !image) } className='button' onClick={handleSubmit}>
                 {loading ? "Uploading..." : "Share"}

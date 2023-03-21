@@ -23,7 +23,7 @@ const FollowersCard = () => {
 
 
   return (
-    <div className='w-[100%] rounded-[.7rem] flex flex-col items-start  text-[13px]  gap-[1rem] '>
+    <div className='w-[100%] rounded-[.7rem] lg:flex md:flex hidden flex-col items-start  text-[13px]  gap-[1rem] '>
         <h3>People you may know</h3>
         {
             persons.map((person, i) => person?._id !== user?._id && <User data={person} />)
