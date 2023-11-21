@@ -8,8 +8,8 @@ import { getTimeLinePosts, likePost } from '../actions/postAction';
 const Post = ({data}) => {
 
   const {authData} = useSelector((state) => state?.authReducer);
-  console.log(data.likes)
-  const [liked, setLiked] = useState(data?.likes.includes(authData?._id));
+  console.log(data?.likes)
+  const [liked, setLiked] = useState(data?.likes?.includes(authData?._id));
   const [likes, setLikes] = useState(data?.likes?.length);
 
   // dispatch

@@ -19,7 +19,7 @@ const Posts = () => {
    if (params?.id) posts = posts.filter((post) => post?.userId == params?.id);
   return (
     <div className='flex flex-col gap-[1rem] '>
-        { !loading ? posts ?  <div>
+        { !loading ? posts?.length > 0 ?  <div>
           {
             posts?.map((post, i) => {
               return (
