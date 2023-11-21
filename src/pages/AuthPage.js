@@ -30,7 +30,9 @@ const AuthPage = () => {
         if (isSignIn) {
             dispatch(signIn(data));
         } else {
-            if (data?.password === data?.confirmpass) dispatch(signUp(data)); else setShowConfirm(true);
+            // if (data?.password === data?.confirmpass) ; else setShowConfirm(true);
+            // alert('hello')
+            dispatch(signUp(data))
         }
         console.log(data)
     }
