@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import { uploadImage } from '../actions/shareActions';
 import { updateUser } from '../actions/UserActions';
 
+
 function ProfileModal({modalOpened, setModalOpened, data}) {
 
   const [opened, { open, close }] = useDisclosure(false);
